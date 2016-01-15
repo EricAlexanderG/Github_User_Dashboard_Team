@@ -1,3 +1,11 @@
 fieldset {
 	margin: 10%;
 }
+
+.listify, li {
+	display: inline-block;
+	color: green;
+	margin: 12px;
+	font-size: 18px;
+
+}
