@@ -1,7 +1,21 @@
+<!-- {% includes "views/base.html" %} -->
 <html>
   <head>
     <link rel="stylesheet" href="../static/css/bootstrap.min.css" type="text/css">
     <link rel="stylesheet" href="../static/css/bootstrap-theme.min.css" type="text/css">
+    <style>
+      body {
+          background-color: linen;
+          margin: 0 auto;
+          width: 900px;
+          min-height: 700px; 
+      }
+
+      h1 {
+          color: maroon;
+          margin-left: 40px;
+      } 
+</style>
   </head>
   <body>
   <header>
@@ -30,7 +44,49 @@
       </div>
     </nav>
   </header>
-  </body>
+
+{% block content %}
+    <div style="overflow-x:auto;">
+  <fieldset class="user_admin_list">
+      <legend><h4>User Dashboard ADMIN</h4></legend>
+      <table>
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Full Name</th>
+            <th>Email</th>
+            <th>Created at</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+      {% for user in users: %}
+          <tr>
+            <td>{{user['first_name']}}</td>
+            <td>{{user['last_name']}}</td>
+            <td>{{user['email']}}</td>
+            <td>{{user['created_at']}}</td>
+            <td>{{user['action']}}</td>
+            <td>
+              <form action='/update' method="POST">
+                <input type='hidden' name='user_id' value="{{user['id']}}">
+                <input type='submit' value="update">
+              </form>
+              <form action='/delete' method="POST"> 
+                <input type='hidden' name='user_id' value="{{user['id']}}">
+                <input type='submit' value="delete">
+              </form>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      {% endfor %}
+      </fieldset>
+</div>
+
+{% endblock content %}
+
+</body>
   <script src = "https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
   <script src = "/static/js/bootstrap.min.js"></script>
 </html>
