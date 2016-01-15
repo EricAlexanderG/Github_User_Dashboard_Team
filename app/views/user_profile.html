@@ -30,8 +30,34 @@
       </div>
     </nav>
   </header>
+    <h3>{{user_info['first_name']}}{{user_info['last_name']}}</h3>
+  <h4>Registered At: {{user_info['created_at']}}</h4>
+  <h4>User ID: {{user_info['user_id']}}</h4>
+  <h4>Email Address: {{user_info['email']}}</h4>
+  <h4>Description: {{user_info['description']}}</h4>
+  <h3>Leave a message for {{user_info['first_name']}}</h3>
 
-
+  <form action='/postmessage' method='POST'>
+      <input type='textarea' name='messagebox'>
+      <input type='submit' name='messagepost' value='Post'>
+    </form>
+    {% for message in messages %}
+      <div id='messageforuser'>
+        <h6>{{message['first_name']}}{{message['last_name']}} posted a message at </h6><p>{{message['created_at']}}</p>
+        <p>{{message['message']}}</p>
+      </div>
+      <div id='commentformessage'>
+        {{% for comment in messages %}}
+          {{ if comment['message_id'] == message[id]}}
+            <h6>{{comment['com_first_name']}} {{comment['com_last_name']}} wrote</h6><p>{{comment['com_created_at']}}</p>
+          {{ endif }}
+        {{ endfor }}
+        <form action='/postcomment' method='POST'>
+          <input type='textarea' name='commentbox'>
+          <input type='submit' name='commentpost' value='Post'>
+        </form>
+      </div>
+      {{ endfor }}
   </body>
   <script src = "https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
   <script src = "/static/js/bootstrap.min.js"></script>
