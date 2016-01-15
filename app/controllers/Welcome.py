@@ -25,3 +25,7 @@ class Welcome(Controller):
         self.models['WelcomeModel'].get_all_users()
         """
         return self.load_view('index.html')
+
+    def edit_users(self):
+
+        return self.load_view('edit_user.html')
