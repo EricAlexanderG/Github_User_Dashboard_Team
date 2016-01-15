@@ -2,8 +2,10 @@
   <head>
     <link rel="stylesheet" href="/static/css/bootstrap.min.css" type="text/css">
     <link rel="stylesheet" href="/static/css/bootstrap-theme.min.css" type="text/css">
+    <link rel="stylesheet" type="text/css" href="/static/css/register.css">
   </head>
   <body>
+  <!-- Navbar -->
   <header>
     <nav class="navbar navbar-inverse navbar-fixed-top">
       <div class="container">
@@ -28,12 +30,30 @@
           </form>
         </div><!--/.navbar-collapse -->
       </div>
-      <a href="/users/register">Register Here!</a>
     </nav>
-
-  </header> 
-
- </body>
+  </header>
+  <!-- Registration form -->
+  <fieldset> 
+	{% if session['name']: %}
+		<h1>Hello, {{session['name']}}! You're already registered. You should go elsewhere!</h1>
+	{% endif %}
+  	<h3>Register</h3>
+	<form action = "/users/bandwagon" method = "post">
+		<p>Email Address: </p>
+		<input type = "text" name = "email" >
+		<p>First Name: </p>
+		<input type = "text" name = "first_name">
+		<p>Last Name: </p>
+		<input type = "text" name = "last_name">
+		<p>Password: </p>
+		<input type = "password" name = "password">
+		<p>Confirm Password: </p>
+		<input type = "password" name = "confirm">
+		<br>
+		<p><input type = "submit" value = "Register"></p>
+	</form>
+</fieldset>
+  </body>
   <script src = "https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
   <script src = "/static/js/bootstrap.min.js"></script>
 </html>
