@@ -1,40 +1,25 @@
 <html>
   <head>
-
+  	<title>Sign in</title>
     <link rel="stylesheet" href="/static/css/bootstrap.min.css" type="text/css">
     <link rel="stylesheet" href="/static/css/bootstrap-theme.min.css" type="text/css">
     <style type="text/css">
-    #content{
-      margin-top: 70px;
-    }
-
-    #welcome{
-    margin: 0px auto;
-    width: 80%;
-    height: 200px;
-    background-color: pink;
-  }
-  #boxes{
-    margin: 0px auto;
-    width: 80%;
-    margin-top: 20px;
-    padding-bottom: 10px;
-
-  }
-  .box{
-    margin: 0px auto;
-    display: inline-block;
-    width: 33%;
-    height: 150px;
-    background-color: pink;
-    vertical-align: top;
-  }
-  input{
-    background-color: lightblue;
-
-  }
-</style>
-
+    	body{
+    		padding-left: 50px;
+    	}
+    	#signin_h1{
+    		margin-top: 100px;
+    	}
+    	input{
+    		display: block;
+    	}
+    	#signin_submit{
+    		margin-left: 100px;
+    		margin-top: 10px;
+    		color: white;
+    		background-color: green;
+    	}
+    </style>
   </head>
   <body>
   <header>
@@ -61,33 +46,18 @@
           </form>
         </div><!--/.navbar-collapse -->
       </div>
-      <a href="/users/register">Register Here!</a>
     </nav>
   </header>
-
-  <div id= 'content'>
-      <div id = 'welcome'>
-        <h2>Welcome to the Test</h2>
-        <p>We're going to build a cool application usng a MVC framework! This application was build with the Village88 Folks!</p>
-        <form action='go' method='start'><input type='submit' name='start' value='You Suck'></form>
-      </div>
-      <div id='boxes'>
-        <div class='box'>
-          <h3>Manage Losers</h3>
-          <p>Using theis Application, you'll learn how to add, remove, and edit users for the application!</p>
-        </div>
-        <div class='box'>
-          <h3>Leave Messages</h3>
-          <p>Users will be able to leave a message to another user using this application.</p>
-        </div>
-        <div class='box'>
-          <h3>Edit Loser Information</h3>
-          <p>Admins will be able to edit another loser's information (email address, first name, last name, etc.)</p>
-        </div>
-      </div>
-
-    </div>
-
+	<h1 id="signin_h1">Sign in</h1>
+	<!-- This form will go to the routes["POST"]["/login"] -->
+	<form action="/login" method="POST">
+		<label for="email">E-mail address:</label>
+		<input type="email" name="email">
+		<label for="password">Password:</label>
+		<input type="password" name="password">
+		<input type="submit" value="Sign In" id="signin_submit">
+	</form>
+	<a href="/register">Don't have an account?  Register.</a>
   </body>
   <script src = "https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
   <script src = "/static/js/bootstrap.min.js"></script>
