@@ -12,3 +12,7 @@ class Comments(Controller):
         self.models['Comment'].create_comment(message_id, request.form)
         return redirect('/')
 
+    def delete_comment(self, comment_id):
+        self.models['Comment'].destroy_comment(comment_id)
+        return redirect('/')
+
